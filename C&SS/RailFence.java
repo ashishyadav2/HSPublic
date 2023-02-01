@@ -1,15 +1,23 @@
+import java.util.Scanner;
 public class RailFence {
     public static void main(String[] args) {
-        System.out.println(encipher(format("Discover interesting projects and people to populate your personal news feed"),4));
-        System.out.println(decipher(format("DOIRIRCNOTPTURAWEIVNENOTDPOUERSLSDSETSGJSPLPLYPONF-CRETPEAEEOAOENEE-"),4));
+	Scanner input = new Scanner(System.in);
+	System.out.print("Plain Text: ");
+	String plainText = input.next();
+	System.out.print("\nKey: ");
+	int key = input.nextInt();
+	String cipherText = encipher(format(plainText),key);
+	System.out.println("Cipher Text: "+cipherText);
+	String pT = decipher(format(cipherText),key);
+	System.out.println("Plain Text: "+ pT);	
     }
-    public static String format(String string) {
+    public static String format(String string) { // to remove spaces and make string to uppercase
         return string.replaceAll("\\s","").toUpperCase();
     }
     public static String encipher(String text,int depth) {
         float len = text.length();
         int n = (int) len;
-        int c = Math.round(len/depth);
+        int c = (int) Math.ceil(len/depth);
         char[][] matrix = new char[depth][c];
         int k=0;
         String ans = "";
@@ -19,10 +27,11 @@ public class RailFence {
                     matrix[j][i] = text.charAt(k++);
                 }
                 else {
-                    matrix[j][i] = '-';
+                    matrix[j][i] = '_';
                 }
             }
         }
+	//printing the matrix
         for (char[] ch: matrix) {
             System.out.print("[");
             for(char chr: ch) {
@@ -46,7 +55,7 @@ public class RailFence {
                     matrix[i][j] = cipherText.charAt(k++);
                 }
                 else {
-                    matrix[i][j] = '-';
+                    matrix[i][j] = '_';
                 }
             }
         }
