@@ -27,11 +27,11 @@ def encipher_rail_fence(text,depth):
                 matrix[j][i] = 'X'
     
     for num in matrix:
-        print("[",end="")
+        # print("[",end="")
         for n in num:
-            print(" "+n+" ",end="")
+            # print(" "+n+" ",end="")
             ans+=n
-        print("]")
+        # print("]")
     
     return ans
 
@@ -48,14 +48,17 @@ def decipher_rail_fence(text,depth):
                 k=k+1
                
             else:
-                matrix[i][j] = 'X'
+                matrix[i][j] = '_'
     
     for i in range(0,c):
         for j in range(0,depth):
-            print(matrix[j][i])
+            ans += matrix[j][i]
     
     return ans
-    
+
+def printt(string):
+    for i in string:
+        print(i,end="")
 print("\n1.Encrypt 2.Decrypt")
 choice = int(input("Your choice: "))
 
@@ -70,17 +73,19 @@ if choice == 1:
         depth = int(input("Depth: "))
         print("Cipher Text: {}".format(encipher_rail_fence(temp,depth)))
     
-    if choice == 2:
+    elif choice == 2:
         plain_text = str(input("Plain text: "))
         depth = int(input("Depth: "))
         temp = format_string(plain_text)
         ct = encipher_rail_fence(temp,depth)
-        print("Rail Fence CT: {}".format(ct))
         key = int(input("Key: "))
         finalCt = cipherFunction(key,ct)
         print("Cipher Text: {}".format(finalCt))
+        
+    else:
+        print("Invalid input")
 
-if choice == 2:
+elif choice == 2:
     print("\n1.Substitution->Transposition 2.Transposition->Substitution")
     choice = int(input("Your choice: "))
     if choice == 1:
@@ -91,10 +96,16 @@ if choice == 2:
         finalPT = cipherFunction(-key,temp)
         print("Plain Text: {}".format(finalPT))
         
-    if choice == 2:
+    elif choice == 2:
         plain_text = str(input("Cipher text: "))
+        depth = int(input("Depth: "))
         key = int(input("Key: "))
         temp = cipherFunction(-key,plain_text)
-        depth = int(input("Depth: "))
         finalPT = decipher_rail_fence(temp,depth)
         print("Plain Text: {}".format(finalPT))
+    else:
+        print("Invalid input")
+    
+else:
+    print("Invalid input")
+        
