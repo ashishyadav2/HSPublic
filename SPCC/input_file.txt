@@ -1,0 +1,11 @@
+MACRO
+# ABC #
+{
+L 1, D1
+A 1, D1
+ST 1, D1
+}
+MEND
+
+:ABC:
+:ABC:

@@ -1,0 +1,22 @@
+MACRO
+# XYZ #
+{ 
+L 1, D1
+A 1, D1
+ST 1, TEMP 
+}
+MEND
+
+MOV A, 05H
+ADD B, 06H
+
+ 
+L 1, D1
+A 1, D1
+ST 1, TEMP 
+
+ 
+L 1, D1
+A 1, D1
+ST 1, TEMP 
+
