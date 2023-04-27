@@ -1,15 +1,17 @@
+%{
+#include<stdio.h>
+%}
 identifier [a-zA-Z][a-zA-Z0-9]*
 %%
-#.* {printf("Header File: %s\n",yytext)}
+#.* {printf("Header File: %s\n",yytext);}
 int |
 void {printf("Keyword: %s\n",yytext);}
-{identifier} \( {printf("Function: %s\n",yytext);}
+{identifier} {printf("Function: %s\n",yytext);}
 {identifier} (\[[0-9]*\])? {printf("Identifier: %s\n",yytext);}
 \{ {printf("Blocks Begins\n");}
 \} {printf("Blocks Ends\n");}
 \".*\" {printf("String: %s\n",yytext);}
 [0-9]+ {printf("Number: %s\n",yytext);}
-\)
 = {printf("Assignment Operator: %s\n",yytext);}
 %%
 int main(int argc, char **argv) {
@@ -27,6 +29,7 @@ int yywrap(){
     return(1);
 }
 
+input.c file
 #include<stdio.h>
 #include<conio.h>
 void main() {
