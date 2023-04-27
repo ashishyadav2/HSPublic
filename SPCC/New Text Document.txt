@@ -1,14 +1,16 @@
 identifier [a-zA-Z][a-zA-Z0-9]*
 %%
-#.* {printf("\nHeader File: %s\n",yytext)}
-void |
-int {printf("\n Keyword: %s\n",yytext);}
-identifier {printf("\nFunction: %s\n",yytext);}
-\{ {printf("\nBlocks Begins\n");}
-\} {printf("\nBlocks Ends\n");}
-\".*\" {printf("\nString: %s\n",yytext);}
-[0-9]+ {printf("\nNumber: %s\n",yytext);}
-= {printf("\nAssignment Operator: %s\n",yytext);}
+#.* {printf("Header File: %s\n",yytext)}
+int |
+void {printf("Keyword: %s\n",yytext);}
+{identifier} \( {printf("Function: %s\n",yytext);}
+{identifier} (\[[0-9]*\])? {printf("Identifier: %s\n",yytext);}
+\{ {printf("Blocks Begins\n");}
+\} {printf("Blocks Ends\n");}
+\".*\" {printf("String: %s\n",yytext);}
+[0-9]+ {printf("Number: %s\n",yytext);}
+\)
+= {printf("Assignment Operator: %s\n",yytext);}
 %%
 int main(int argc, char **argv) {
     FILE *file;
