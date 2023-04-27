@@ -1,0 +1,36 @@
+identifier [a-zA-Z][a-zA-Z0-9]*
+%%
+#.* {printf("\nHeader File: %s\n",yytext)}
+void |
+int {printf("\n Keyword: %s\n",yytext);}
+identifier {printf("\nFunction: %s\n",yytext);}
+\{ {printf("\nBlocks Begins\n");}
+\} {printf("\nBlocks Ends\n");}
+\".*\" {printf("\nString: %s\n",yytext);}
+[0-9]+ {printf("\nNumber: %s\n",yytext);}
+= {printf("\nAssignment Operator: %s\n",yytext);}
+%%
+int main(int argc, char **argv) {
+    FILE *file;
+    file = fopen("input.c","r");
+    if (!file) {
+        printf("File not found");
+    }
+    yyin = file;
+    yylex();
+    printf("\n");
+    return(0);
+}
+int yywrap(){
+    return(1);
+}
+
+#include<stdio.h>
+#include<conio.h>
+void main() {
+    int a,b,c;
+    a = 5;
+    b = 8;
+    c = a+b;
+    printf("Sum: %d",c);
+}
