@@ -1,3 +1,5 @@
+#Proceed with caution this code is half baked!
+
 %{
 #include<stdio.h>
 %}
@@ -7,7 +9,7 @@ identifier [a-zA-Z][a-zA-Z0-9]*
 int |
 void {printf("Keyword: %s\n",yytext);}
 {identifier} {printf("Function: %s\n",yytext);}
-{identifier} (\[[0-9]*\])? {printf("Identifier: %s\n",yytext);}
+{identifier} (\[[0-9]+\])? {printf("Identifier: %s\n",yytext);}
 \{ {printf("Blocks Begins\n");}
 \} {printf("Blocks Ends\n");}
 \".*\" {printf("String: %s\n",yytext);}
