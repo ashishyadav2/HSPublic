@@ -1,0 +1,28 @@
+sudo apt-get remove docker docker-engine docker.io
+sudo apt install docker.io
+sudo snap install docker
+sudo docker run hello-world
+sudo docker images
+sudo docker ps -a
+sudo docker ps
+sudo docker pull mysql/mysql-server:latest
+sudo docker run --name = mysql_docker -d mysql/mysql-server:latest
+sudo apt-get install mysql-client
+sudo docker logs mysql_docker
+# password will be generated take note of it. it will be used to log in mysql server
+sudo docker exec -it mysql_docker bash
+mysql -uroot -p
+#paste that password
+ALTER USER 'root' @ 'localhost' IDENTIFIED BY 'newpassword';
+show databases;
+create database college;
+use college;
+CREATE TABLE employee (name VARCHAR(20),id INT, salary INT);
+INSERT INTO employee('abc',1,250000);
+SELECT * FROM employee;
+exit 
+exit
+sudo docker start mysql_docker
+sudo docker stop mysql_docker
+sudo docker restart mysql_docker
+sudo docker rm mysql_docker
