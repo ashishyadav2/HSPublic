@@ -1,15 +1,11 @@
-#Proceed with caution this code is half baked!
-
-%{
-#include<stdio.h>
-%}
+function ("printf"|"main")
 identifier [a-zA-Z][a-zA-Z0-9]*
 %%
 #.* {printf("Header File: %s\n",yytext);}
 int |
 void {printf("Keyword: %s\n",yytext);}
-{identifier} {printf("Function: %s\n",yytext);}
-{identifier} (\[[0-9]+\])? {printf("Identifier: %s\n",yytext);}
+{function} {printf("Function: %s\n",yytext);}
+{identifier} {printf("Identifier: %s\n",yytext);}
 \{ {printf("Blocks Begins\n");}
 \} {printf("Blocks Ends\n");}
 \".*\" {printf("String: %s\n",yytext);}
@@ -29,15 +25,4 @@ int main(int argc, char **argv) {
 }
 int yywrap(){
     return(1);
-}
-
-input.c file
-#include<stdio.h>
-#include<conio.h>
-void main() {
-    int a,b,c;
-    a = 5;
-    b = 8;
-    c = a+b;
-    printf("Sum: %d",c);
 }

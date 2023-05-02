@@ -1,0 +1,6 @@
+S3
+create bucket
+write name
+create bucket
+click on bucket
+upload files 

@@ -1,0 +1,12 @@
+# beanstalk
+login aws manangement console
+search beanstalk
+application information
+domain - write domain name check availabilty
+platform- python
+version label
+application code
+	upload your code- local file - choose file
+skip to review
+submit
+
