@@ -1,22 +1,26 @@
 MACRO
-# XYZ #
-{ 
+# ABC #
+{
 L 1, D1
 A 1, D1
-ST 1, TEMP 
+ST 1, TEMP
 }
 MEND
 
-MOV A, 05H
-ADD B, 06H
+MOV 05,AX
+MOV 09, AX
 
- 
+
 L 1, D1
 A 1, D1
-ST 1, TEMP 
+ST 1, TEMP
 
- 
+
 L 1, D1
 A 1, D1
-ST 1, TEMP 
+ST 1, TEMP
 
+
+L 1, D1
+A 1, D1
+ST 1, TEMP
